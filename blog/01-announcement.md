@@ -77,7 +77,7 @@ mmdoc.text_doc.text = mmdoc.text_doc.url.load()
 
 ```
 
-Ultimately, there is one main theme here: **Documents adapt to your data, so your data doesn't have to adapt to Document.**
+Ultimately, there is one main theme here: **Documents adapt to your data, so your data doesn't have to adapt to the Document.**
 
 ### DocumentArray
 
@@ -92,7 +92,7 @@ da = DocumentArray([MyDoc(txt='hi there!' for _ in range(10)])
 However, the commitment to a dataclass-like interface allows for DocumentArrays that are typed by a specific schema:
 
 ```python
-da = DocumentArray[MyDoc]([MyDoc(txt='hi there!' for _ in range(10)])
+da = DocumentArray[MyDoc]([MyDoc(txt='hi there!') for _ in range(10)])
 ```
 
 ## The What: Document Store
@@ -102,7 +102,7 @@ The idea here is simple: Documents can be either in memory or in a database, and
 ```python
 from docarray import DocumentArray, DocumentStore
 
-da = DocumentArray[MyDoc]([MyDoc(txt='hi there!' for _ in range(10)])
+da = DocumentArray[MyDoc]([MyDoc(txt='hi there!') for _ in range(10)])
 
 store = DocumentStore[MyDoc](storage='annlite')
 store.add(da)  # add in-memory Documents into the Document Store
