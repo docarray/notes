@@ -200,7 +200,7 @@ However, this integration is not without friction:
 - Since currently every Document follows the same schema, as Document payload cannot be customized
 - This means that one is forced to create payload with (potentially many) empty and unused fields
 - While at the same time, there is no natural way to add new fields
-- Sending requests from programming languages other than Python requires the user to recreated the Document's structure, needlessly
+- Sending requests from programming languages other than Python requires the user to needlessly recreate the Document's structure
 
 By switching to a dataclass-first approach with pydantic as a fundamental building block, we are able to ease all of these pains:
 
@@ -214,11 +214,10 @@ In the land of cloud-nativeness and microservices, the concerns from "normal" we
 
 With this in mind, DocArray v2 can offer the following improvements
 
-- Creating valid protobuf definitions from outside of python will be as simple as doing the same for JSON: Just specify a mapping that includes the keys that you defined in the Document dataclass interface
-- It is no longer needed to re-create the predefined Document structure in your Protobuf definitions
+- Creating valid protobuf definitions from outside of Python will be as simple as doing the same for JSON: Just specify a mapping that includes the keys that you defined in the Document dataclass interface
+- It is no longer necessary to re-create the predefined Document structure in your Protobuf definitions
 - For every microservice, the Document schema can function as requirement or contract about the input and output data of that particular microservice
 
 Currently, a DocArray-based microservice architecture will usually rely on `Document` being the unified input and output for all microservices. So there might be concern here: Won't this new, more flexible structure create a huge mess where microservices cannot rely on anything?
 We argue the opposite! In complex real-life settings, it is often the case that input and output Documents heavily rely on the `.chunks` field to represent nested data. Therefore, it is already unclear what exact data model can be expected.
 The shift to a dataclass-first approach allows you to make all of these (nested) data models explicit instead of implicit, leading to _more_ interoperability between microservices, not less.
-
