@@ -150,7 +150,7 @@ All of these scenarios can only be solved by a solution that gives all the flexi
 
 `DocumentArray` is fundamentally a row-based data structure: Every Document is one unit (row), that can be manipulated, shuffled around, etc. This is a great property to have in an information retrieval or neural search setting, where tasks like ranking require row-based data access.
 
-For other use cases like training an ML model, however, a row-based data structure is preferable: When you train your model, you want it to take in all data of a given mini-batch at once, as one big tensor; you don't want to first stack a bunch of tiny tensors before your forward pass.
+For other use cases like training an ML model, however, a column-based data structure is preferable: When you train your model, you want it to take in all data of a given mini-batch at once, as one big tensor; you don't want to first stack a bunch of tiny tensors before your forward pass.
 
 Therefore, we will be introducing a mode for selectively enabling column-based behaviour on certain fields of your data model ("stacked mode"):
 
