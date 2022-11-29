@@ -128,7 +128,7 @@ We believe that this makes sense for the following reasons:
 
 But there is a flip side to this: What does DocArray offer that differentiates it from pydantic?
 
-- ML focussed types: `Tensor`, `TorchTensor`, `TFTensor`, `Embedding`, ...
+- ML focused types: `Tensor`, `TorchTensor`, `TFTensor`, `Embedding`, ...
 - Types that are alive: `ImageUrl` can `.load()` a URL to image tensor, `TextUrl` can load and tokenize text documents, etc.
 - Pre-built Documents for different data modalities: `Image`, `Text`, `3DMesh`, `Video`, `Audio`, ... Note that all of these will be valid pydantic models!
 - The concepts of DocumentArray and DocumentStore
