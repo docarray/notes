@@ -118,19 +118,19 @@ The overarching theme of this rewrite is making DocArray more universal, more fl
 Ultimately, there are many reasons and many perspectives that make us believe in this transition.
 Below you can find our reasoning from some of these perspectives.
 
-## The Why: Pydantic Perspective
+## The Why: pydantic Perspective
 
 DocArray will build its `Document`s on top of pydantic models.
 We believe that this makes sense for the following reasons:
 
-- Pydantic provides a standard and beloved API for data modelling that is an excellent foundation
+- pydantic provides a standard and beloved API for data modelling that is an excellent foundation
 - DocArray can directly benefit from several pydantic features, such as serialization to JSON/dict, data validation, FastAPI integration, etc
 
-But there is a flip side to this: What does DocArray offer that differentiates it from Pydantic?
+But there is a flip side to this: What does DocArray offer that differentiates it from pydantic?
 
 - ML focussed types: `Tensor`, `TorchTensor`, `TFTensor`, `Embedding`, ...
 - Types that are alive: `ImageUrl` can `.load()` a URL to image tensor, `TextUrl` can load and tokenize text documents, etc.
-- Pre-built Documents for different data modalities: `Image`, `Text`, `3DMesh`, `Video`, `Audio`, ... Note that all of these will be valid Pydantic models!
+- Pre-built Documents for different data modalities: `Image`, `Text`, `3DMesh`, `Video`, `Audio`, ... Note that all of these will be valid pydantic models!
 - The concepts of DocumentArray and DocumentStore
 - Cloud ready: Serialization to Protobuf for use with microservices and gRPC
 - Support for vector search functionalities, such as `find()` and `embed()`
@@ -194,7 +194,7 @@ Disentangling the concepts of `DocumentArray` and `DocumentStore` will give more
 
 ## The Why: Web Application Perspective
 
-Currently it is possible to use DocArray in combination with FastAPI and other web frameworks, as it already provides a translation to Pydantic.
+Currently it is possible to use DocArray in combination with FastAPI and other web frameworks, as it already provides a translation to pydantic.
 However, this integration is not without friction:
 
 - Since currently every Document follows the same schema, as Document payload cannot be customized
@@ -202,11 +202,11 @@ However, this integration is not without friction:
 - While at the same time, there is no natural way to add new fields
 - Sending requests from programming languages other than Python requires the user to recreated the Document's structure, needlessly
 
-By switching to a dataclass-first approach with Pydantic as a fundamental building block, we are able to ease all of these pains:
+By switching to a dataclass-first approach with pydantic as a fundamental building block, we are able to ease all of these pains:
 
 - Fields are completely customizable
-- Every `Document` is also a Pydantic model, enabling amazing support for FastAPI and other tools
-- Creating payloads from other programming languages is as easy as creating a dictionary with the same fields as the dataclass - same workflow as with normal Pydantic
+- Every `Document` is also a pydantic model, enabling amazing support for FastAPI and other tools
+- Creating payloads from other programming languages is as easy as creating a dictionary with the same fields as the dataclass - same workflow as with normal pydantic
 
 ## The Why: Microservices Perspective
 
