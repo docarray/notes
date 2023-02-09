@@ -20,8 +20,8 @@ class MyBanner(BaseDocument):
     image: Image
 
 class MyPoster(BaseDocument):
-    left = MyBanner
-    right = MyBanner
+    left: MyBanner
+    right: MyBanner
 ```
 
 This is a powerful design pattern, but the API is a bit too verbose when using our predefined Document class:
